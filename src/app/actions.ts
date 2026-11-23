@@ -137,8 +137,9 @@ export async function saveCustomRole(formData: FormData) {
   if (!name) throw new Error("Le nom du rôle est obligatoire.");
   if (!/^#[0-9A-Fa-f]{6}$/.test(color)) throw new Error("Couleur invalide.");
 
-  const { data: validPermissions, error: permissionError } = await supabase
-    .from("permission_catalog").select("key").in("key", permissionKeys).eq("active", true);
+  const { data: validPermissions, error: permissionError } = permissionKeys.length
+    ? await supabase.from("permission_catalog").select("key").in("key", permissionKeys).eq("active", true)
+    : { data: [], error: null };
   if (permissionError) throw new Error(permissionError.message);
   if ((validPermissions || []).length !== permissionKeys.length) throw new Error("Une permission sélectionnée est inconnue.");
 
