@@ -88,3 +88,7 @@
 .danger-button:hover{background:#4a292d}
 @media(max-width:900px){.role-meta-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.permission-groups{grid-template-columns:1fr}}
 @media(max-width:560px){.role-meta-grid{grid-template-columns:1fr}.permission-heading{align-items:flex-start;flex-direction:column}.custom-role-card summary{gap:9px}.role-edit-hint{font-size:9px}}
+
+.permission-status{display:inline-flex;vertical-align:middle;margin-left:6px;padding:2px 5px;border-radius:10px;font-style:normal;font-size:8px;font-weight:600;letter-spacing:.2px}
+.permission-status.ready{background:#24382f;color:#8dc5a0}
+.permission-status.planned{background:#30313a;color:#a7adbb}
