@@ -63,8 +63,9 @@ export async function saveUserVillageRole(formData: FormData) {
 
   const targetUserId = String(formData.get("user_id") || "");
   const villageId = String(formData.get("village_id") || "");
-  const customRoleId = String(formData.get("custom_role_id") || "");
-  const role = String(formData.get("role") || "reader");
+  const roleSelection = String(formData.get("role_selection") || "legacy:reader");
+  const customRoleId = roleSelection.startsWith("custom:") ? roleSelection.slice(7) : "";
+  const role = roleSelection.startsWith("legacy:") ? roleSelection.slice(7) : "reader";
   const rankLabel = String(formData.get("rank_label") || "").trim() || null;
   const active = String(formData.get("active") || "") === "true";
   const membershipId = String(formData.get("membership_id") || "");
@@ -93,7 +94,7 @@ export async function saveUserVillageRole(formData: FormData) {
       .select("id").eq("user_id", targetUserId).eq("village_id", villageId).maybeSingle();
     if (existing) {
       result = await supabase.from("village_memberships")
-        .update({ role, rank_label: rankLabel, active }).eq("id", existing.id);
+        .update({ role: customRoleId ? "reader" : role, custom_role_id: customRoleId || null, rank_label: rankLabel, active }).eq("id", existing.id);
     } else {
       result = await supabase.from("village_memberships")
         .insert({ user_id: targetUserId, village_id: villageId, role: customRoleId ? "reader" : role, custom_role_id: customRoleId || null, rank_label: rankLabel, active, permissions: {} });
