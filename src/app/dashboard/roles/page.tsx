@@ -20,7 +20,7 @@ export default async function RoleManagementPage() {
   if (actor?.global_role !== "super_admin") redirect("/dashboard");
 
   const [{ data: permissions }, { data: roles }, { data: rolePermissions }] = await Promise.all([
-    supabase.from("permission_catalog").select("key,category,label,description,sort_order").eq("active", true).order("sort_order"),
+    supabase.from("permission_catalog").select("key,category,label,description,sort_order,implemented").eq("active", true).order("sort_order"),
     supabase.from("custom_roles").select("id,village_id,name,description,color").order("village_id").order("name"),
     supabase.from("role_permissions").select("role_id,permission_key")
   ]);
@@ -48,7 +48,7 @@ export default async function RoleManagementPage() {
             {items.map(permission => (
               <label className="permission-choice" key={permission.key}>
                 <input type="checkbox" name="permission_keys" value={permission.key} defaultChecked={selected.has(permission.key)}/>
-                <span><b>{permission.label}</b><small>{permission.description}</small></span>
+                <span><b>{permission.label} <i className={permission.implemented ? "permission-status ready" : "permission-status planned"}>{permission.implemented ? "Actif" : "À venir"}</i></b><small>{permission.description}</small></span>
               </label>
             ))}
           </div>
@@ -75,7 +75,7 @@ export default async function RoleManagementPage() {
             <div className="users-field"><label>Couleur</label><input name="color" type="color" defaultValue="#c4a36a"/></div>
             <div className="users-field"><label>Description</label><input name="description" maxLength={240} placeholder="Responsabilités de ce rôle"/></div>
           </div>
-          <div className="permission-heading"><div><b>Permissions accordées</b><small>Coche uniquement les actions autorisées pour ce rôle.</small></div><span>{(permissions || []).length} permissions disponibles</span></div>
+          <div className="permission-heading"><div><b>Permissions accordées</b><small>Coche les droits à accorder. « Actif » est déjà appliqué ; « À venir » sera branché lorsque le module correspondant sera développé.</small></div><span>{(permissions || []).length} permissions disponibles</span></div>
           <PermissionChoices/>
           <div className="role-actions"><button className="primary" type="submit"><Plus size={15}/> Créer le rôle</button></div>
         </form>
