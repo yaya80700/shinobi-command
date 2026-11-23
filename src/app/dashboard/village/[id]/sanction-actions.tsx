@@ -12,7 +12,6 @@ const statusLabels:Record<string,string>={active:"En vigueur",appealed:"Contest√
 
 export default function SanctionActions({sanction,villageId,canEdit,canDelete}:{sanction:Sanction;villageId:string;canEdit:boolean;canDelete:boolean}) {
   const [editing,setEditing]=useState(false);
-  const [confirmDelete,setConfirmDelete]=useState(false);
   if (!canEdit && !canDelete) return null;
   return <div className="sanction-actions">
     {canEdit && <button type="button" className="secondary small-action" onClick={()=>setEditing(!editing)}>{editing?<X size={14}/>:<Pencil size={14}/>} {editing?"Fermer":"Modifier"}</button>}
