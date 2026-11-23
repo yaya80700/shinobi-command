@@ -16,3 +16,41 @@
 .auth-switch{text-align:center;font-size:11px;color:#8b98a8;margin:20px 0 0}
 .auth-switch button{background:none;border:0;color:var(--gold);font-weight:700;cursor:pointer;padding:0 0 0 4px}
 .auth-notice{color:#8bc69f;background:#1d3028;border:1px solid #315443;padding:10px 12px;border-radius:8px;font-size:11px;line-height:1.5}
+
+.users-page{min-height:100vh;background:var(--bg)}
+.users-header{padding:26px max(22px,calc((100vw - 1160px)/2)) 30px;border-bottom:1px solid var(--line);background:linear-gradient(110deg,#211c1a,#141c25)}
+.users-title{display:flex;align-items:center;gap:18px;margin:34px 0 20px}
+.users-icon{width:54px;height:54px;border-radius:14px;background:#342b20;border:1px solid #594936;color:var(--gold);display:grid;place-items:center}
+.users-title h1{font:600 32px 'Playfair Display',serif;margin:0}
+.users-title p:last-child{font-size:12px;color:#929eae;margin:7px 0 0}
+.founder-only{display:inline-flex;align-items:center;gap:7px;color:#d4b88d;font-size:10px;border:1px solid #514432;border-radius:30px;padding:8px 12px}
+.users-content{max-width:1160px;margin:auto;padding:28px 22px 60px}
+.users-warning{display:flex;gap:13px;padding:16px 18px;border:1px solid #4b4031;background:#211d18;border-radius:10px;color:var(--gold);margin-bottom:22px}
+.users-warning b{font-size:12px;color:#ead7b8}
+.users-warning p{font-size:11px;color:#a69a87;margin:5px 0 0;line-height:1.6}
+.users-panel{border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:22px;margin-bottom:20px}
+.users-panel-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.users-panel-head .eyebrow{margin-bottom:6px}
+.users-panel-head h2{display:flex;align-items:center;gap:9px;font:600 20px 'Playfair Display',serif;margin:0}
+.users-panel-head h2 svg{color:var(--gold)}
+.users-panel-head>span{font-size:10px;color:#8290a0}
+.users-form{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 13px}
+.users-field{min-width:0}
+.users-field label{display:block;color:#c5ccd5;font-size:11px;font-weight:600;margin:0 0 8px}
+.users-field input,.users-field select{width:100%;border:1px solid var(--line);background:#0d131b;color:var(--text);border-radius:8px;padding:11px 12px;outline:none;font-size:11px;min-width:0}
+.users-field input:focus,.users-field select:focus{border-color:#a27e53}
+.users-submit{grid-column:1/-1;display:flex;justify-content:flex-end;padding-top:12px}
+.users-submit .primary,.member-save{font-size:11px}
+.users-hint,.users-footnote{font-size:10px;color:#8491a0;line-height:1.6;margin:14px 0 0}
+.users-list{display:flex;flex-direction:column}
+.member-row{display:grid;grid-template-columns:minmax(180px,1.5fr) minmax(130px,.8fr) minmax(130px,.8fr) minmax(120px,.7fr) auto;align-items:end;gap:12px;padding:15px 0;border-top:1px solid #25303c}
+.member-identity{display:flex;align-items:center;gap:10px;align-self:center;min-width:0}
+.member-avatar{width:34px;height:34px;border-radius:50%;background:#332a22;color:var(--gold);display:grid;place-items:center;font-weight:700;flex-shrink:0}
+.member-identity b{display:block;font-size:11px;overflow-wrap:anywhere}
+.member-identity small{display:block;color:#8390a0;font-size:9px;margin-top:4px}
+.users-field.compact label{font-size:9px;color:#8996a5}
+.users-field.compact input,.users-field.compact select{padding:9px;font-size:10px}
+.member-save{padding:10px 13px;white-space:nowrap}
+.users-empty{padding:24px;border:1px dashed #465160;border-radius:9px;text-align:center;color:#98a5b4;font-size:11px}
+@media(max-width:900px){.users-form{grid-template-columns:repeat(2,minmax(0,1fr))}.member-row{grid-template-columns:1fr 1fr}.member-identity{grid-column:1/-1}.member-save{justify-self:start}}
+@media(max-width:560px){.users-header{padding:20px 16px}.users-title{align-items:flex-start;margin:25px 0 17px}.users-title h1{font-size:25px}.users-content{padding:18px 12px}.users-panel{padding:15px}.users-form{grid-template-columns:1fr}.users-submit{grid-column:1}.member-row{grid-template-columns:1fr}.member-identity{grid-column:1}.member-save{width:100%}}
