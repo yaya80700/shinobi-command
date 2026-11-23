@@ -92,7 +92,7 @@ export default async function RoleManagementPage() {
                   <input type="hidden" name="role_id" value={role.id}/>
                   <div className="role-meta-grid">
                     <div className="users-field"><label>Nom du rôle</label><input name="name" required maxLength={50} defaultValue={role.name}/></div>
-                    <div className="users-field"><label>Village</label><select name="village_id" defaultValue={role.village_id}>{villages.map(v=><option key={v.id} value={v.id}>{v.name}</option>)}</select></div>
+                    <div className="users-field"><label>Village</label><input value={villageName(role.village_id)} readOnly/><input type="hidden" name="village_id" value={role.village_id}/></div>
                     <div className="users-field"><label>Couleur</label><input name="color" type="color" defaultValue={role.color}/></div>
                     <div className="users-field"><label>Description</label><input name="description" maxLength={240} defaultValue={role.description}/></div>
                   </div>
