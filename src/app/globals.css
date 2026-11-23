@@ -92,3 +92,16 @@
 .permission-status{display:inline-flex;vertical-align:middle;margin-left:6px;padding:2px 5px;border-radius:10px;font-style:normal;font-size:8px;font-weight:600;letter-spacing:.2px}
 .permission-status.ready{background:#24382f;color:#8dc5a0}
 .permission-status.planned{background:#30313a;color:#a7adbb}
+
+
+/* Gestion des sanctions */
+.sanction-actions{display:flex;align-items:center;gap:6px;flex-wrap:wrap;min-width:150px}
+.small-action{display:inline-flex;align-items:center;gap:5px;padding:7px 9px;border-radius:6px;font-size:10px;cursor:pointer;white-space:nowrap}
+.secondary.small-action{background:#202a36;border:1px solid #3a4655;color:#d2d9e2}
+.danger.small-action{background:#382326;border:1px solid #62373b;color:#e29a96}
+.sanction-edit-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;width:min(560px,75vw);padding:14px;margin-top:8px;background:#101720;border:1px solid #34404e;border-radius:9px}
+.sanction-edit-form label{display:flex;flex-direction:column;gap:5px;color:#b9c3cf;font-size:10px}
+.sanction-edit-form input,.sanction-edit-form select,.sanction-edit-form textarea{width:100%;min-width:0;background:#0b1118;color:#e8edf3;border:1px solid #34404e;border-radius:6px;padding:8px;font:inherit}
+.sanction-edit-form .edit-wide{grid-column:1/-1}
+.sanction-edit-form button{justify-content:center}
+@media(max-width:700px){.sanction-edit-form{width:min(90vw,420px);grid-template-columns:1fr}.sanction-edit-form .edit-wide{grid-column:1}}
