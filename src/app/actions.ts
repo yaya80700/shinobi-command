@@ -107,7 +107,7 @@ export async function saveUserVillageRole(formData: FormData) {
     actor_id: user.id,
     action: membershipId ? "Modification des droits d'un membre" : "Attribution d'un rôle de village",
     entity_type: "village_membership",
-    details: { target_user_id: targetUserId, role, rank_label: rankLabel, active }
+    details: { target_user_id: targetUserId, role: customRoleId || role, rank_label: rankLabel, active }
   });
 
   revalidatePath("/dashboard");
@@ -145,6 +145,8 @@ export async function saveCustomRole(formData: FormData) {
 
   let savedRoleId = roleId;
   if (roleId) {
+    const { data: existingRole } = await supabase.from("custom_roles").select("id").eq("id", roleId).eq("village_id", villageId).maybeSingle();
+    if (!existingRole) throw new Error("Ce rôle n’existe pas dans ce village.");
     const { error } = await supabase.from("custom_roles")
       .update({ name, description, color, updated_at: new Date().toISOString() })
       .eq("id", roleId).eq("village_id", villageId);
